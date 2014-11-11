@@ -154,35 +154,35 @@ if test -d $build_dir/.gem; then
 fi
 
 # Testing for gulp
-is_gulpfile_present= [ -f $build_dir/gulpfile.js ];
-if $is_gulpfile_present; then
-  status "Found Gulpfile"
-else
-  status "No Gulpfile (gulpfile.js) found"
-fi
+# is_gulpfile_present= [ -f $build_dir/gulpfile.js ];
+# if $is_gulpfile_present; then
+#   status "Found Gulpfile"
+# else
+#   status "No Gulpfile (gulpfile.js) found"
+# fi
 
 # Check and run Gulp
-(
-  if $is_gulpfile_present; then
-    status "Running gulp heroku:$NODE_ENV task"
-    $build_dir/node_modules/.bin/gulp heroku
-  fi
-)
+# (
+#   if $is_gulpfile_present; then
+#     status "Running gulp heroku:$NODE_ENV task"
+#     $build_dir/node_modules/.bin/gulp heroku
+#   fi
+# )
 
 # Update the PATH
-status "Building runtime environment"
-mkdir -p $build_dir/.profile.d
-echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+# status "Building runtime environment"
+# mkdir -p $build_dir/.profile.d
+# echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
 
 # Post package.json to nomnom service
 # Use a subshell so failures won't break the build.
-(
-  curl \
-    --data @$build_dir/package.json \
-    --fail \
-    --silent \
-    --request POST \
-    --header "content-type: application/json" \
-    https://nomnom.heroku.com/?request_id=$REQUEST_ID \
-    > /dev/null
-) &
+# (
+#   curl \
+#     --data @$build_dir/package.json \
+#     --fail \
+#     --silent \
+#     --request POST \
+#     --header "content-type: application/json" \
+#     https://nomnom.heroku.com/?request_id=$REQUEST_ID \
+#     > /dev/null
+# ) &
