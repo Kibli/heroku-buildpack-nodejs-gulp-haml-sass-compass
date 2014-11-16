@@ -148,10 +148,10 @@ rm -rf $cache_dir/ruby
 mkdir -p $cache_dir/ruby
 
 # If app has a gems directory, cache it.
-if test -d $build_dir/.gem; then
-  status "Caching ruby gems directory for future builds"
-  cp -r $build_dir/.gem $cache_dir/ruby
-fi
+# if test -d $build_dir/.gem; then
+#   status "Caching ruby gems directory for future builds"
+#   cp -r $build_dir/.gem $cache_dir/ruby
+# fi
 
 # Testing for gulp
 # is_gulpfile_present= [ -f $build_dir/gulpfile.js ];
@@ -170,9 +170,9 @@ fi
 # )
 
 # Update the PATH
-status "Building runtime environment"
-mkdir -p $build_dir/.profile.d
-echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+# status "Building runtime environment"
+# mkdir -p $build_dir/.profile.d
+# echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
 
 # Post package.json to nomnom service
 # Use a subshell so failures won't break the build.
